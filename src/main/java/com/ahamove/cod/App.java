@@ -15,22 +15,18 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class App
 {
     private static Dotenv dotenv = Dotenv.load();
-
     private static final String BASE_URL = dotenv.get("BASE_URL");
     private static final String VERSION = "v1";
     private static final String PARTNER_ID = "local_dev"; // replace with your partner_id
-
     private static final String MY_LOCAL_SECRET_KEY = dotenv.get("MY_LOCAL_SECRET_KEY");
     private static String MY_LOCAL_PASS = dotenv.get("MY_LOCAL_PASS");
     private static final String APISTG_COD_PUBLIC_KEY = dotenv.get("APISTG_COD_PUBLIC_KEY");
 
-
     public static void main( String[] args )
     {
-        String supplierId = "84762247148";
+        String supplierId = "84762247148"; // sample phone number
         try {
             JSONArray orders = retrieveCodInfo(supplierId);
-
             // try to get first order then pay cod
             System.out.println("Pay cod for " + orders.getJSONObject(0).getString("id"));
             // pay Cod
@@ -40,6 +36,12 @@ public class App
         }
     }
 
+    /**
+     * payCod
+     * @param supplierId
+     * @param order
+     * @throws Exception
+     */
     public static void payCod(String supplierId, JSONObject order) throws Exception
     {
         JSONObject payload = new JSONObject();
@@ -51,7 +53,6 @@ public class App
         payload.put("amount", order.getInt("total_cod"));
         System.out.print("payload");
         System.out.println(payload.toString());
-
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
@@ -93,11 +94,16 @@ public class App
 
     }
 
+    /**
+     * retrieveCodInfo
+     * @param supplierId
+     * @return
+     * @throws Exception
+     */
     public static JSONArray retrieveCodInfo(String supplierId) throws Exception
     {
         String url =
                 BASE_URL + VERSION + "/cod/retrieve_info?partner_id=" + PARTNER_ID + "&supplier_id=" + supplierId;
-
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
