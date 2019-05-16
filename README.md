@@ -1,4 +1,4 @@
-### Ahamove SCOD JAVA Sample code
+### AhaMove COD JAVA Sample code
 
 After download source code, open with intelli or other IDEA
 
