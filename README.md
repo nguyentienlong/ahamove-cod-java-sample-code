@@ -47,3 +47,5 @@ tyn4AF/2GXmF7q378rE15QimEcBBRcJGMl50QGqFUkdEROeA7WI9aO2ml98=
 ```
 
 Any question, feel free to ping me at long@ahamove.com
+
+A part of this source code refer to PGPHelper class from this document https://payment.momo.vn/docs/
