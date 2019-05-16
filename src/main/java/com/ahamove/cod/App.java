@@ -17,7 +17,7 @@ public class App
     private static Dotenv dotenv = Dotenv.load();
     private static final String BASE_URL = dotenv.get("BASE_URL");
     private static final String VERSION = "v1";
-    private static final String PARTNER_ID = "local_dev"; // replace with your partner_id
+    private static final String PARTNER_ID = dotenv.get("PARTNER_ID");
     private static final String MY_LOCAL_SECRET_KEY = dotenv.get("MY_LOCAL_SECRET_KEY");
     private static String MY_LOCAL_PASS = dotenv.get("MY_LOCAL_PASS");
     private static final String APISTG_COD_PUBLIC_KEY = dotenv.get("APISTG_COD_PUBLIC_KEY");
